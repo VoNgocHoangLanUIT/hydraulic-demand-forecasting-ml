@@ -17,7 +17,7 @@ Dữ liệu được sử dụng là dữ liệu mô phỏng hàng tháng từ �
 Dự án được thực hiện bởi **Nhóm 18** - Khoa Hệ Thống Thông Tin, Trường Đại học Công Nghệ Thông Tin (UIT):
 
 | STT | Họ và tên | MSSV | 
-|:---:|:---|:---|:---|
+|:---:|:---|:---|
 | 1 | Võ Ngọc Hoàng Lân | 23520843 |
 | 2 | Nguyễn Minh Hiển | 23520462 | 
 | 3 | Nguyễn Phúc Lộc | 23520859 |  
