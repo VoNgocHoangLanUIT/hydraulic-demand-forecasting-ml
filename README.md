@@ -1,119 +1,87 @@
-# hydraulic-demand-forecasting-ml
+# Hydraulic Product Demand Forecasting 📈
 
-Ứng dụng các mô hình chuỗi thời gian & học máy để **phân tích và dự báo nhu cầu** (units_sold) cho các sản phẩm thuỷ lực (máy bơm/van công nghiệp) dựa trên dữ liệu bán hàng lịch sử theo tháng và các yếu tố bên ngoài. 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![University](https://img.shields.io/badge/UIT-Information%20Systems-green)
 
----
+## 📖 Giới thiệu (Overview)
 
-## I. Tổng quan đề tài
+Dự án này tập trung vào việc ứng dụng các mô hình Học máy (Machine Learning) và Chuỗi thời gian (Time Series) để phân tích và dự báo nhu cầu tiêu thụ sản phẩm (cụ thể là máy bơm và van công nghiệp) cho một công ty thủy lực đa quốc gia.
 
-- **Bài toán:** Dự báo doanh số/nhu cầu theo thời gian giúp tối ưu tồn kho, giảm rủi ro thiếu hàng hoặc tồn kho quá mức. fileciteturn0file0  
-- **Dữ liệu:** Chuỗi thời gian **theo tháng**, có phân nhóm theo **region/country**, kèm các biến ngoại sinh (economic indicator, competitor activity, …). fileciteturn0file0  
-- **Kết quả chính:** Trong các mô hình thử nghiệm, **Prophet** cho hiệu năng tốt nhất (MAPE ~ 4.99% trong báo cáo). fileciteturn0file0  
+Dữ liệu được sử dụng là dữ liệu mô phỏng hàng tháng từ đầu năm 2020 đến hết năm 2024. Mục tiêu là xây dựng mô hình dự báo chính xác doanh số bán hàng trong tương lai, hỗ trợ doanh nghiệp tối ưu hóa quy trình nhập hàng và quản lý kho.
 
----
+**Lĩnh vực nghiên cứu:** Data Mining, Time Series Analysis, Demand Forecasting.
 
-## II. Mô hình & phương pháp
+## 👥 Thành viên nhóm (Team Members)
 
-Notebook triển khai theo các nhóm mô hình sau:
+Dự án được thực hiện bởi **Nhóm 18** - Khoa Hệ Thống Thông Tin, Trường Đại học Công Nghệ Thông Tin (UIT):
 
-### 1) Baseline (mốc so sánh)
-- **Moving Average (MA)**: cửa sổ 5 tháng và 10 tháng.
+| STT | Họ và tên | MSSV | Vai trò |
+|:---:|:---|:---|:---|
+| 1 | Nguyễn Phúc Lộc | 23520859 | Leader / Modeling |
+| 2 | Nguyễn Minh Hiển | 23520462 | Data Analyst |
+| 3 | Võ Ngọc Hoàng Lân | 23520843 | Researcher |
+| 4 | Võ Hồ Trung Quân | 23521273 | Report / Presentation |
 
-### 2) Chuỗi thời gian truyền thống
-- **SARIMA**: chọn tham số bằng `auto_arima` theo tiêu chí AIC (chu kỳ mùa vụ s=12 cho dữ liệu tháng). fileciteturn0file0  
-- **Holt–Winters**: làm mịn mũ (level + trend + seasonality). fileciteturn0file0  
+## 🗂 Cấu trúc dữ liệu (Dataset)
 
-### 3) Học máy
-- **XGBoost Regressor**:  
-  - Mã hoá region/country  
-  - Tạo **time features** (month/year/quarter)  
-  - Tạo **lag features** (lag_1, lag_3, lag_12)  
-  - Kết hợp thêm các **biến ngoại sinh**  
-- **Prophet** (Meta): mô hình cộng g(t)+s(t)+h(t)+ε(t); có thể thêm regressors để tận dụng yếu tố ngoại sinh. fileciteturn0file0  
+Dữ liệu đầu vào bao gồm lịch sử bán hàng của các thiết bị thủy lực với các đặc trưng chính:
+* **Thời gian:** Dữ liệu theo tháng (2020 - 2024).
+* **Sản phẩm:** Máy bơm thủy lực, Van công nghiệp.
+* **Biến phụ thuộc:** Doanh số bán hàng (Sales Volume).
+* **Các yếu tố ảnh hưởng:** Xu hướng thị trường, yếu tố mùa vụ.
 
----
+## 🛠 Công nghệ & Thư viện (Tech Stack)
 
-## III. Tiêu chí đánh giá
+Dự án được thực hiện hoàn toàn trên ngôn ngữ **Python**, sử dụng các thư viện phân tích dữ liệu và học máy phổ biến:
 
-So sánh mô hình bằng các chỉ số phổ biến:
-- **R²**
-- **RMSE**
-- **MAE**
-- **MAPE** fileciteturn0file0  
+* **Xử lý dữ liệu:** `Pandas`, `NumPy`
+* **Trực quan hóa:** `Matplotlib`, `Seaborn`
+* **Thống kê & Chuỗi thời gian:** `Statsmodels`, `Pmdarima` (Auto ARIMA)
+* **Mô hình học máy:** `Scikit-learn`, `XGBoost` (theo tài liệu tham khảo)
+* **Môi trường:** Jupyter Notebook / Google Colab
 
----
+## ⚙️ Quy trình thực hiện (Pipeline)
 
-## IV. Kết quả tham khảo (theo báo cáo)
+1.  **Tiền xử lý dữ liệu (Data Preprocessing):**
+    * Làm sạch dữ liệu, xử lý missing values.
+    * Chuyển đổi định dạng thời gian.
+2.  **Phân tích khám phá (EDA):**
+    * Vẽ biểu đồ chuỗi thời gian để quan sát xu hướng (Trend) và tính mùa vụ (Seasonality).
+    * Phân tích tương quan.
+3.  **Xây dựng mô hình (Modeling):**
+    * Áp dụng các mô hình thống kê truyền thống (ARIMA/SARIMA).
+    * Áp dụng các mô hình Machine Learning hiện đại.
+4.  **Đánh giá (Evaluation):**
+    * Sử dụng các chỉ số đo lường sai số: MAE, RMSE, MAPE.
 
-| Mô hình | R² | RMSE | MAE | MAPE |
-|---|---:|---:|---:|---:|
-| MA(5) | -0.4683 | 10127.10 | 8984.82 | 19.44% |
-| MA(10) | -0.2579 | 9375.88 | 6962.13 | 16.18% |
-| SARIMA | 0.3847 | 6433.90 | 5527.10 | 11.62% |
-| Holt–Winters | 0.5225 | 5497.13 | 4777.06 | 10.01% |
-| XGBoost | 0.8072 | 3657.51 | 3203.34 | 7.12% |
-| **Prophet** | **0.8830** | **2814.56** | **2238.36** | **4.99%** |
+## 🚀 Hướng dẫn cài đặt (Installation)
 
-> Ghi chú: Kết quả phụ thuộc vào cách chia train/test và phiên bản dữ liệu làm sạch. fileciteturn0file0  
+Để chạy được source code của dự án, vui lòng thực hiện các bước sau:
 
----
+1.  **Clone repository:**
+    ```bash
+    git clone [https://github.com/your-username/Hydraulic-Product-Demand-Forecasting.git](https://github.com/your-username/Hydraulic-Product-Demand-Forecasting.git)
+    cd Hydraulic-Product-Demand-Forecasting
+    ```
 
-## V. Cấu trúc repo (gợi ý)
+2.  **Cài đặt các thư viện cần thiết:**
+    ```bash
+    pip install pandas numpy matplotlib statsmodels pmdarima scikit-learn
+    ```
 
-```
-hydraulic-demand-forecasting-ml/
-├─ data/
-│  └─ Hydraulic_Sales_Cleaned.csv        # dữ liệu đã làm sạch (không commit nếu lớn)
-├─ notebooks/
-│  └─ Hydraulic_Sales.ipynb              # notebook chính
-├─ report/
-│  └─ NHOM18-BaoCao.pdf                  # báo cáo IEEE
-├─ requirements.txt
-└─ README.md
-```
+3.  **Chạy Notebook:**
+    Mở file `Hydraulic_Sales.ipynb` bằng Jupyter Notebook hoặc Visual Studio Code để xem quá trình phân tích và kết quả.
 
----
+## 📊 Kết quả (Results)
+*(Phần này bạn có thể cập nhật thêm hình ảnh biểu đồ dự báo từ file notebook hoặc file báo cáo để README sinh động hơn)*
 
-## VI. Cài đặt & chạy
+* Dự án đã xác định được tính mùa vụ rõ rệt trong doanh số bán hàng.
+* Các mô hình đưa ra dự báo với độ chính xác chấp nhận được cho kế hoạch kinh doanh ngắn hạn.
 
-### Cách A — Chạy trên Google Colab (khuyến nghị)
-1. Mở notebook `notebooks/Hydraulic_Sales.ipynb`.
-2. Upload file dữ liệu `Hydraulic_Sales_Cleaned.csv` khi notebook yêu cầu.
-3. Chạy lần lượt các cell từ trên xuống.
+## 📄 Tài liệu tham khảo (References)
 
-### Cách B — Chạy local (Jupyter)
-**Yêu cầu:** Python 3.9+ (khuyến nghị 3.10+)
-
-Cài thư viện:
-```bash
-pip install -U pip
-pip install pandas numpy matplotlib seaborn scikit-learn statsmodels pmdarima xgboost prophet
-```
-
-Mở notebook:
-```bash
-jupyter notebook notebooks/Hydraulic_Sales.ipynb
-```
+Dự án có tham khảo các nghiên cứu về "Product Forecasting", "XGBoost", và quy trình CRISP-DM (chi tiết xem trong file báo cáo `NHOM18-BaoCao.pdf`).
 
 ---
-
-## VII. Tái lập thí nghiệm (reproducibility)
-
-- Giữ cố định `random_state` cho các mô hình ML (XGBoost).
-- Chia train/test theo **thời gian** (không shuffle) để tránh rò rỉ dữ liệu.
-- Nếu thay đổi “dữ liệu sạch”/các cột ngoại sinh, cần cập nhật danh sách `exog_cols` trong notebook.
-
----
-
-## VIII. Nhóm thực hiện
-
-- Nguyễn Phúc Lộc  
-- Nguyễn Minh Hiển  
-- Võ Ngọc Hoàng Lân  
-- Võ Hồ Trung Quân fileciteturn0file0  
-
----
-
-## IX. Tài liệu
-
-Xem chi tiết phương pháp, thiết lập thí nghiệm và phân tích kết quả trong `report/NHOM18-BaoCao.pdf`. fileciteturn0file0
+*Created by Group 18 - UIT*
