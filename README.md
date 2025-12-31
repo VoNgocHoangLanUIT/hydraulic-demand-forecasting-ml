@@ -1,6 +1,6 @@
 # hydraulic-demand-forecasting-ml
 
-Ứng dụng các mô hình chuỗi thời gian & học máy để **phân tích và dự báo nhu cầu** (units_sold) cho các sản phẩm thuỷ lực (máy bơm/van công nghiệp) dựa trên dữ liệu bán hàng lịch sử theo tháng và các yếu tố bên ngoài. fileciteturn0file0
+Ứng dụng các mô hình chuỗi thời gian & học máy để **phân tích và dự báo nhu cầu** (units_sold) cho các sản phẩm thuỷ lực (máy bơm/van công nghiệp) dựa trên dữ liệu bán hàng lịch sử theo tháng và các yếu tố bên ngoài. 
 
 ---
 
