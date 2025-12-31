@@ -54,34 +54,9 @@ Dự án được thực hiện hoàn toàn trên ngôn ngữ **Python**, sử d
     * Áp dụng các mô hình Machine Learning hiện đại.
 4.  **Đánh giá (Evaluation):**
     * Sử dụng các chỉ số đo lường sai số: MAE, RMSE, MAPE.
-
-## 🚀 Hướng dẫn cài đặt (Installation)
-
-Để chạy được source code của dự án, vui lòng thực hiện các bước sau:
-
-1.  **Clone repository:**
-    ```bash
-    git clone [https://github.com/your-username/Hydraulic-Product-Demand-Forecasting.git](https://github.com/your-username/Hydraulic-Product-Demand-Forecasting.git)
-    cd Hydraulic-Product-Demand-Forecasting
-    ```
-
-2.  **Cài đặt các thư viện cần thiết:**
-    ```bash
-    pip install pandas numpy matplotlib statsmodels pmdarima scikit-learn
-    ```
-
-3.  **Chạy Notebook:**
-    Mở file `Hydraulic_Sales.ipynb` bằng Jupyter Notebook hoặc Visual Studio Code để xem quá trình phân tích và kết quả.
+   
 
 ## 📊 Kết quả (Results)
-*(Phần này bạn có thể cập nhật thêm hình ảnh biểu đồ dự báo từ file notebook hoặc file báo cáo để README sinh động hơn)*
 
 * Dự án đã xác định được tính mùa vụ rõ rệt trong doanh số bán hàng.
 * Các mô hình đưa ra dự báo với độ chính xác chấp nhận được cho kế hoạch kinh doanh ngắn hạn.
-
-## 📄 Tài liệu tham khảo (References)
-
-Dự án có tham khảo các nghiên cứu về "Product Forecasting", "XGBoost", và quy trình CRISP-DM (chi tiết xem trong file báo cáo `NHOM18-BaoCao.pdf`).
-
----
-*Created by Group 18 - UIT*
